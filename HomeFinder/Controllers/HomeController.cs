@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using HomeFinder.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HomeFinder.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -17,7 +19,6 @@ namespace HomeFinder.Controllers
         {
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             return View();
