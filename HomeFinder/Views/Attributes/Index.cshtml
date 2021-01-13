@@ -1,0 +1,30 @@
+﻿@model IEnumerable<LocationAttributes>
+@{
+    ViewData["Title"] = "Attribute List";
+}
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Rank</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var attribut in Model)
+                {
+                <tr>
+                    <td>@attribut.Id</td>
+                    <td>@attribut.Name</td>
+                    <td>@attribut.Rank</td>
+                    <td>@attribut.Grade</td>
+                </tr>
+                <tr>
+                    <td><a asp-controller="Attributes" asp-action="details" asp-route-id="@attribut.Id" class="btn btn-primary">View</a></td>
+                    <td><a asp-controller="Attributes"  asp-action="Update" asp-route-id="@attribut.Id" class="btn btn-primary">Edit</a></td>
+                    <td><a asp-controller="Attributes" asp-action="Delete" asp-route-id="@attribut.Id" class="btn btn-primary text-danger">Delete</a></td>
+                </tr>
+                }
+            </tbody>
+        </table>

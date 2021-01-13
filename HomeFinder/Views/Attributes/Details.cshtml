@@ -1,0 +1,19 @@
+﻿@model HomeFinder.ViewModels.AttributeDetails
+@{
+    ViewData["Title"] = "Attribute Details";
+}
+<h3>@Model.PageTitle</h3>
+<div>
+    Name @Model.Attributes.Name
+</div>
+<div>
+    Rank @Model.Attributes.Rank
+</div>
+<div>
+    Grade @Model.Attributes.Grade
+</div>
+<div class="card-footer text-center">
+    <a asp-controller="Attributes" asp-action="Index" class="btn btn-primary">Back</a>
+    <a asp-controller="Attributes"  asp-action="Update" asp-route-id="@Model.Attributes.Id" class="btn btn-primary">Edit</a>
+    <a asp-controller="Attributes" asp-action="Delete" asp-route-id="@Model.Attributes.Id" class="btn btn-primary text-danger">Delete</a>
+</div>

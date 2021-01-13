@@ -1,0 +1,21 @@
+﻿@model LocationAttributes
+@{
+    ViewData["Title"] = "Create location attribute";
+}
+<form asp-controller="Attributes" asp-action="Create" method="post">
+    <div>
+        <label asp-for="Name">Attribute Name</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Rank">Rank</label>
+        <input asp-for="Rank" />
+        <span asp-validation-for="Rank"  class="text-danger"></span>
+    </div>
+        <button type="submit">Create</button>
+    </div>
+</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

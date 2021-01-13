@@ -13,6 +13,7 @@ namespace HomeFinder.Models
         {
 
         }
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> Usrs { get; set; }
+        public DbSet<LocationAttributes> Attributes { get; set; }
     }
 }

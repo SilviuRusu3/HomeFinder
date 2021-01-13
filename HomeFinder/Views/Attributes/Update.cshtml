@@ -1,0 +1,25 @@
+﻿@model HomeFinder.Models.LocationAttributes
+@{
+    ViewData["Title"] = "Update location attribute";
+}
+<form asp-controller="Attributes" asp-action="Update" method="post">
+    <div>
+        <label asp-for="Name">Attribute Name</label>
+        <input asp-for="Name" value="@Model.Name"/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Rank">Rank</label>
+        <input asp-for="Rank" value="@Model.Rank"/>
+        <span asp-validation-for="Rank" class="text-danger"></span>
+    </div>
+    <div>
+    <button type="submit">Update</button>
+    </div>
+</form>
+<div>
+    <a asp-controller="Attributes" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary">Cancel</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

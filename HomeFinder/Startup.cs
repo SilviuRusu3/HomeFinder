@@ -28,6 +28,11 @@ namespace HomeFinder
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().AddXmlSerializerFormatters();
+            services.AddScoped<IAttributesRepository, SQLAttributeRepository>();
+            //Singleton-a single instance that is reused for all requests
+            //Scoped an instance within the scope of a HTTP request
+            //Transient an instance is created every time an instance is requested
             services.AddDbContextPool<ApplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
