@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace HomeFinder.Models
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base (options)
         {
-
         }
-        public DbSet<User> Usrs { get; set; }
         public DbSet<LocationAttributes> Attributes { get; set; }
     }
 }

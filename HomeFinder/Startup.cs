@@ -34,12 +34,12 @@ namespace HomeFinder
             //Scoped an instance within the scope of a HTTP request
             //Transient an instance is created every time an instance is requested
             services.AddDbContextPool<ApplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 4;
                 options.Password.RequiredUniqueChars = 1;
             }).AddEntityFrameworkStores<ApplicationDbContext>();
-            //services.ConfigureApplicationCookie(options => options.LoginPath = "/User/Login");
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/User/Login");
             services.AddControllersWithViews(options =>
             {
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
