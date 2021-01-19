@@ -55,9 +55,9 @@ namespace HomeFinder.Models
             //return deletedAttribute;
         }
 
-        public IEnumerable<LocationAttributes> GetAllAttributes()
+        public IEnumerable<LocationAttributes> GetAllAttributes(string userId)
         {
-            return dbContext.Attributes;
+            return dbContext.Attributes.Where(a => a.UserId == userId);
         }
 
         public LocationAttributes GetAttribute(int Id)

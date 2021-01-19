@@ -8,7 +8,7 @@ namespace HomeFinder.Models
     public interface IAttributesRepository
     {
         LocationAttributes GetAttribute(int Id);
-        IEnumerable<LocationAttributes> GetAllAttributes();
+        IEnumerable<LocationAttributes> GetAllAttributes(string userId);
 
         LocationAttributes AddAtribute(LocationAttributes attribute);
         void UpdateAttribute(LocationAttributes attributeChanges);

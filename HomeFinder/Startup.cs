@@ -33,7 +33,7 @@ namespace HomeFinder
             //Singleton-a single instance that is reused for all requests
             //Scoped an instance within the scope of a HTTP request
             //Transient an instance is created every time an instance is requested
-            services.AddDbContextPool<ApplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContextPool<ApplicationDbContext>(option => option.UseNpgsql(Configuration.GetConnectionString("PostGreConnection")));
             services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 4;

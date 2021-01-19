@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HomeFinder.HelpClass;
 using HomeFinder.Models;
 using HomeFinder.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -20,12 +21,13 @@ namespace HomeFinder.Controllers
         {
             try
             {
-                var model = _attributesRepo.GetAllAttributes();
+                string userId = this.User.GetUserId();
+                var model = _attributesRepo.GetAllAttributes(userId);
                 return View(model);
             }
             catch (Exception e)
             {
-                return NotFound();
+                return NotFound(e.Message);
             }
             
         }
@@ -55,7 +57,9 @@ namespace HomeFinder.Controllers
         public IActionResult Create(LocationAttributes modelAttribute)
             //IActionResult is suitable for ViewResult and RedirectToAction because they implement this interface
         {
-            if(ModelState.IsValid)//used for validation
+            string userId = this.User.GetUserId();
+            modelAttribute.UserId = userId;
+            if (ModelState.IsValid)//used for validation
             {
                 LocationAttributes attribute = _attributesRepo.AddAtribute(modelAttribute);
                 return RedirectToAction("Details", new { id = attribute.Id });
@@ -96,8 +100,9 @@ namespace HomeFinder.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(LocationAttributes locationAttributes)
         {
+            string userId = this.User.GetUserId();
             _attributesRepo.DeleteAttribute(locationAttributes.Id);
-            IEnumerable<LocationAttributes> attributes = _attributesRepo.GetAllAttributes();
+            IEnumerable<LocationAttributes> attributes = _attributesRepo.GetAllAttributes(userId);
             if (attributes != null)
             {
                 return View("Index", attributes);
