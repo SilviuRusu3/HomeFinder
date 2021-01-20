@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,13 @@ namespace HomeFinder.Models
         {
         }
         public DbSet<LocationAttributes> Attributes { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.LocationAttributes)
+                .WithOne(l => l.User).
+                IsRequired().OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }

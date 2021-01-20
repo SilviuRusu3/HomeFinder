@@ -10,6 +10,6 @@ namespace HomeFinder.Models
     public class User : IdentityUser
     {
         public int ScaleFactor { get; set; }
-
+        public ICollection<LocationAttributes> LocationAttributes { get; set; }
     }
 }
