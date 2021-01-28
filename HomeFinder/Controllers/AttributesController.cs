@@ -17,6 +17,11 @@ namespace HomeFinder.Controllers
         {
             _attributesRepo = attributesRepo;
         }
+
+        public IActionResult General()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             try
@@ -29,12 +34,12 @@ namespace HomeFinder.Controllers
             {
                 return NotFound(e.Message);
             }
-            
+
         }
 
         public IActionResult Details(int? Id)
         {
-            if(Id != null)
+            if (Id != null)
             {
                 AttributeDetails model = new AttributeDetails
                 {
@@ -44,7 +49,7 @@ namespace HomeFinder.Controllers
                 return View(model);
             }
             return NotFound();
-            
+
         }
         [HttpGet]
         public ViewResult Create()
@@ -55,7 +60,7 @@ namespace HomeFinder.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(LocationAttributes modelAttribute)
-            //IActionResult is suitable for ViewResult and RedirectToAction because they implement this interface
+        //IActionResult is suitable for ViewResult and RedirectToAction because they implement this interface
         {
             string userId = this.User.GetUserId();
             modelAttribute.UserId = userId;
@@ -79,7 +84,7 @@ namespace HomeFinder.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update(LocationAttributes attributeChange)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _attributesRepo.UpdateAttribute(attributeChange);
                 return RedirectToAction("Details", new { id = attributeChange.Id });

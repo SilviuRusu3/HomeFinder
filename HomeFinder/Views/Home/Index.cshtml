@@ -1,8 +1,44 @@
-﻿@{
+﻿@inject SignInManager<User> signInManager;
+@{
     ViewData["Title"] = "Home Page";
+    bool active = signInManager.IsSignedIn(User);
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@if (active) {
+<div class="container text-center flex-column" role="article">
+    <section class="flex-sm-row pl-5 pr-5 pt-3 pb-3 ml-5 mr-5">
+        <img src="~/Google_map.png" class="img-fluid" alt="Google map image" />
+    </section>
+    <section class="flex-sm-row">
+        <p>Review1</p>
+        <p>Review1</p>
+        <p>Review1</p>
+    </section>
+    <section class="flex-sm-row p-3">
+        <div class="btn"> <a class="btn nav-link text-dark btn-outline-success" asp-controller="user" asp-action="register">Review Tool</a></div>
+        <div class="btn"><a class="btn nav-link text-dark btn-outline-success" asp-controller="user" asp-action="register">Financial Calculators</a></div>
+        <div class="btn"><a class="btn nav-link text-dark btn-outline-success" asp-controller="user" asp-action="register">Tips & Tricks</a></div>
+    </section>
 </div>
+} else {
+<div class="container text-center" role="article">
+    <h1 class="text-primary">Home Finder</h1>
+    <p class="text-black-50">-Helps you find a home-</p>
+    <div class="row">
+        <section class="col-sm-4 text-left">
+            <h4 class="text-success">Find your perfect home</h4>
+            <p id="home" class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Nullam risus urna, fermentum a mi a, elementum congue leo. 
+            Nam magna nunc, interdum vitae augue id, consequat viverra ipsum. 
+            Donec faucibus ipsum erat, a ultricies nisi facilisis sed. 
+            Fusce eleifend sapien sit amet dolor facilisis, eget mattis purus facilisis. 
+            Nam eget malesuada purus. Aliquam hendrerit nibh vestibulum semper placerat. 
+            Aenean pellentesque egestas metus, non maximus eros. </p>
+        </section>
+        <section class="col-sm">
+            <img src="~/Sold house.jpg" class="img-fluid" alt="Image of a sold house"/>
+        </section>
+    </div>
+</div>
+}
+
