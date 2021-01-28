@@ -1132,3 +1132,6 @@ C:\Users\Silviu\repos\HomeFinder\HomeFinder\bin\Debug\netcoreapp3.1\Npgsql.Entit
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\bin\Debug\netcoreapp3.1\Npgsql.NetTopologySuite.dll
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\EFCoreNpgsqlNetTopologySuite.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Attributes\General.cshtml.g.cs

@@ -2,19 +2,20 @@
 @{
     ViewData["Title"] = "Delete location attribute";
 }
-<form asp-controller="Attributes" asp-action="Delete" method="post">
-    <div>
-        <label asp-for="Name">Attribute Name</label>
-        <input asp-for="Name" value="@Model.Name" disabled/>
+<h1>@ViewData["Title"]</h1>
+<div class="row">
+    <div class="col col-md-12">
+        <form asp-controller="Attributes" asp-action="Delete" method="post">
+            <div class="form-group">
+                <label asp-for="Name">Attribute Name</label>
+                <input class="form-control" asp-for="Name" value="@Model.Name" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="Rank">Rank</label>
+                <input class="form-control" asp-for="Name" value="@Model.Rank" disabled />
+            </div>
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
     </div>
-    <div>
-        <label asp-for="Rank">Rank</label>
-        <input asp-for="Rank" value="@Model.Rank" disabled/>
-    </div>
-    <div>
-        <button type="submit">Delete</button>
-    </div>
-</form>
-<div>
-    <a asp-controller="Attributes" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary">Cancel</a>
 </div>
+<div class="text-center"><a class="btn btn-secondary" asp-controller="Attributes" asp-action="General">Cancel</a></div>

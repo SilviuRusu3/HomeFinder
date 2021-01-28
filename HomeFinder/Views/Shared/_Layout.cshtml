@@ -1,4 +1,7 @@
 ﻿@inject SignInManager<User> signInManager;
+@{
+    bool active = signInManager.IsSignedIn(User);
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,69 +10,70 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://kit.fontawesome.com/8d2323ec4e.js" crossorigin="anonymous"></script>
+    <script src="~/js/site.js"></script>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HomeFinder</a>
+<body class="bg-light">
+    <header class="sticky-top bg-warning">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light mb-5">
+            <div class="container" role="navigation">
+                <a class="navbar-brand text-primary" asp-controller="Home" asp-action="Index"><i class="fas fa-house-user"></i>HomeFinder</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Attributes" asp-action="Index">List</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Attributes" asp-action="Create">Create Location Attribute</a>
-                    </li>
-                </ul>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        @if (signInManager.IsSignedIn(User))
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm">
+                    <ul class="navbar-nav ml-auto justify-content-end">
+                        @if (active)
                         {
                             <li class="nav-item">
                                 <form method="post" asp-action="logout" asp-controller="user">
-                                    <button type="submit" style="width: auto">
+                                    <button type="submit" class="btn nav-link text-dark btn-outline-primary w-100">
                                         Logout @User.Identity.Name
                                     </button>
                                 </form>
+                            </li>
+                            <li class="nav-item">
+                                <div class="dropdown show d-flex flex-column" role="navigation">
+                                    <a class="btn dropdown-toggle nav-link text-dark border border-primary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">
+                                        Options
+                                    </a>
+                                    <div class="dropdown-menu border border-primary" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" data-toggle="tooltip" title="Location attributes define what you like about the location of the home you are reviewing" asp-controller="Attributes" asp-action="General">Location Attributes</a>
+                                        <a class="dropdown-item" data-toggle="tooltip" title="Home Features define what aspects of the home you are inspecting" href="#">Home Features</a>
+                                        <a class="dropdown-item" href="#">Help</a>
+                                    </div>
+                                </div>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="user" asp-action="register">Register</a>
+                                <a class="btn nav-link text-dark btn-outline-primary" asp-controller="user" asp-action="register">Register</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="user" asp-action="login">Log in</a>
+                                <a class="btn nav-link text-dark btn-outline-primary" asp-controller="user" asp-action="login">Log in</a>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container" role="main">
+        <main class="pb-3">
             @RenderBody()
+            <div class="pb-3"></div>
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - HomeFinder - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer p-3 bg-warning">
+        <div class="d-flex justify-content-around" role="navigation">
+            <div></div>
+            <div class="btn"> <a class="btn nav-link text-dark btn-outline-primary" asp-controller="home" asp-action="about">About</a></div>
+            <div class="btn"><a class="btn nav-link text-dark btn-outline-primary" asp-controller="home" asp-action="privacy">Privacy</a></div>
+            <div class="btn"><a class="btn nav-link text-dark btn-outline-primary" asp-controller="home" asp-action="contact">Contact</a></div>
+            <div></div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

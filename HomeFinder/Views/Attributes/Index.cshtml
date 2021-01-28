@@ -2,27 +2,40 @@
 @{
     ViewData["Title"] = "Attribute List";
 }
-        <table>
-            <thead>
+<h1>@ViewData["Title"]</h1>
+@if (Model.Any<LocationAttributes>())
+{
+    <div class="text-center"><a class="btn btn-primary" asp-controller="Attributes" asp-action="General">Back</a></div>
+    <div class="border border-info mt-3 mb-5">
+        <table class="table table-bordered table-hover border-info">
+            <thead class="thead-light">
                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Rank</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Attribute Name</th>
+                    <th scope="col">Rank</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var attribut in Model)
                 {
-                <tr>
-                    <td>@attribut.Id</td>
-                    <td>@attribut.Name</td>
-                    <td>@attribut.Rank</td>
-                </tr>
-                <tr>
-                    <td><a asp-controller="Attributes" asp-action="details" asp-route-id="@attribut.Id" class="btn btn-primary">View</a></td>
-                    <td><a asp-controller="Attributes"  asp-action="Update" asp-route-id="@attribut.Id" class="btn btn-primary">Edit</a></td>
-                    <td><a asp-controller="Attributes" asp-action="Delete" asp-route-id="@attribut.Id" class="btn btn-primary text-danger">Delete</a></td>
-                </tr>
+                    <tr>
+                        <td>@attribut.Id</td>
+                        <td>@attribut.Name</td>
+                        <td>@attribut.Rank</td>
+                    </tr>
+                    <tr class="text-center">
+                        <td colspan="3">
+                            <a asp-controller="Attributes" asp-action="details" asp-route-id="@attribut.Id" class="btn btn-primary">View</a>
+                            <a asp-controller="Attributes" asp-action="Update" asp-route-id="@attribut.Id" class="btn btn-primary">Edit</a>
+                            <a asp-controller="Attributes" asp-action="Delete" asp-route-id="@attribut.Id" class="btn btn-primary text-danger">Delete</a>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
+    </div>
+}
+else
+{
+    <p>No location attributes set</p>
+}

@@ -16,7 +16,7 @@ namespace HomeFinder.ViewModels
         public string Password { get; set; }
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The passwords in the two fields are different")]
+        [Compare("Password", ErrorMessage = "Passwords do not match")]
         public string ConfirmPassword { get; set; }
     }
 }

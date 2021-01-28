@@ -38,6 +38,7 @@ namespace HomeFinder
             {
                 options.Password.RequiredLength = 4;
                 options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireNonAlphanumeric = true;
             }).AddEntityFrameworkStores<ApplicationDbContext>();
             services.ConfigureApplicationCookie(options => options.LoginPath = "/User/Login");
             services.AddControllersWithViews(options =>
