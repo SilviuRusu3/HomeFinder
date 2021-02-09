@@ -52,7 +52,6 @@ namespace HomeFinder.Models
                 dbContext.Attributes.Remove(deletedAttribute);
                 dbContext.SaveChanges();
             }
-            //return deletedAttribute;
         }
 
         public IEnumerable<LocationAttributes> GetAllAttributes(string userId)
@@ -88,7 +87,6 @@ namespace HomeFinder.Models
             }
             }
             dbContext.SaveChanges();
-            //return attributeChanges;
         }
     }
 }

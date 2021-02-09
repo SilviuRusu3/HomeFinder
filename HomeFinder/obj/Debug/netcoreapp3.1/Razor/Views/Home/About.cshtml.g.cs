@@ -40,8 +40,15 @@ using HomeFinder.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\Silviu\repos\HomeFinder\HomeFinder\Views\_ViewImports.cshtml"
+using HomeFinder.HelpClass;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"57327d802e81294a942744efaf2351f18a5709c3", @"/Views/Home/About.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4a309290040b4772bd6c868af16766ba88b7c535", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e4f60e3cbd83124cee6da4c12ec5fb46217561b6", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_About : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

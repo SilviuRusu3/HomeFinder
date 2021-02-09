@@ -5,7 +5,7 @@
 <h1>@ViewData["Title"]</h1>
 @if (Model.Any<LocationAttributes>())
 {
-    <div class="text-center"><a class="btn btn-primary" asp-controller="Attributes" asp-action="General">Back</a></div>
+    <div class="text-center"><a class="btn btn-primary" asp-controller="Attributes" asp-action="General">Back to main</a></div>
     <div class="border border-info mt-3 mb-5">
         <table class="table table-bordered table-hover border-info">
             <thead class="thead-light">
@@ -38,4 +38,5 @@
 else
 {
     <p>No location attributes set</p>
+    <div class="text-center"><a class="btn btn-primary" asp-controller="Attributes" asp-action="General">Back to main</a></div>
 }

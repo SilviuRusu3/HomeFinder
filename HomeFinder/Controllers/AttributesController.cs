@@ -49,7 +49,6 @@ namespace HomeFinder.Controllers
                 return View(model);
             }
             return NotFound();
-
         }
         [HttpGet]
         public ViewResult Create()
@@ -76,7 +75,11 @@ namespace HomeFinder.Controllers
         {
             if (id != null)
             {
-                return View(_attributesRepo.GetAttribute((int)id));
+                LocationAttributes attribute = _attributesRepo.GetAttribute((int)id);
+                if (attribute != null)
+                {
+                    return View(attribute);
+                }
             }
             return NotFound();
         }
@@ -97,7 +100,11 @@ namespace HomeFinder.Controllers
         {
             if (id != null)
             {
-                return View(_attributesRepo.GetAttribute((int)id));
+                LocationAttributes attribute = _attributesRepo.GetAttribute((int)id);
+                if (attribute != null)
+                {
+                    return View(attribute);
+                }
             }
             return NotFound();
         }
