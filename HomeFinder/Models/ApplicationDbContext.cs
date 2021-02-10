@@ -22,7 +22,6 @@ namespace HomeFinder.Models
         }
         public DbSet<LocationAttributes> Attributes { get; set; }
         public DbSet<HomeFeatures> Features { get; set; }
-        //public DbSet<Review> Reviews { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseNpgsql("Host=localhost;Database=HomeFinder;Username=postgres;Password=123456",
