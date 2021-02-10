@@ -40,8 +40,15 @@ using HomeFinder.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\Silviu\repos\HomeFinder\HomeFinder\Views\_ViewImports.cshtml"
+using HomeFinder.HelpClass;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"bf638e93ab22a4b9dfcba801ce5ce824513c7712", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4a309290040b4772bd6c868af16766ba88b7c535", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e4f60e3cbd83124cee6da4c12ec5fb46217561b6", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/Google_map.png"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -95,7 +102,7 @@ using HomeFinder.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("<div class=\"container text-center flex-column\" role=\"article\">\r\n    <section class=\"flex-sm-row pl-5 pr-5 pt-3 pb-3 ml-5 mr-5\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "bf638e93ab22a4b9dfcba801ce5ce824513c77126898", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "bf638e93ab22a4b9dfcba801ce5ce824513c77127077", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -111,7 +118,7 @@ using HomeFinder.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n    </section>\r\n    <section class=\"flex-sm-row\">\r\n        <p>Review1</p>\r\n        <p>Review1</p>\r\n        <p>Review1</p>\r\n    </section>\r\n    <section class=\"flex-sm-row p-3\">\r\n        <div class=\"btn\"> ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf638e93ab22a4b9dfcba801ce5ce824513c77128318", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf638e93ab22a4b9dfcba801ce5ce824513c77128497", async() => {
                 WriteLiteral("Review Tool");
             }
             );
@@ -130,7 +137,7 @@ using HomeFinder.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</div>\r\n        <div class=\"btn\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf638e93ab22a4b9dfcba801ce5ce824513c77129800", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf638e93ab22a4b9dfcba801ce5ce824513c77129979", async() => {
                 WriteLiteral("Financial Calculators");
             }
             );
@@ -149,7 +156,7 @@ using HomeFinder.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</div>\r\n        <div class=\"btn\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf638e93ab22a4b9dfcba801ce5ce824513c771211292", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf638e93ab22a4b9dfcba801ce5ce824513c771211471", async() => {
                 WriteLiteral("Tips & Tricks");
             }
             );
@@ -191,7 +198,7 @@ using HomeFinder.ViewModels;
         </section>
         <section class=""col-sm"">
             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "bf638e93ab22a4b9dfcba801ce5ce824513c771213931", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "bf638e93ab22a4b9dfcba801ce5ce824513c771214110", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

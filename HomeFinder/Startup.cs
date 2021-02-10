@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HomeFinder.Models;
+using HomeFinder.Models.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,10 +31,11 @@ namespace HomeFinder
         {
             services.AddMvc().AddXmlSerializerFormatters();
             services.AddScoped<IAttributesRepository, SQLAttributeRepository>();
+            services.AddScoped<IFeaturesRepository, SQLFeaturesRepository>();
             //Singleton-a single instance that is reused for all requests
             //Scoped an instance within the scope of a HTTP request
             //Transient an instance is created every time an instance is requested
-            services.AddDbContextPool<ApplicationDbContext>(option => option.UseNpgsql(Configuration.GetConnectionString("PostGreConnection")));
+            services.AddDbContext<ApplicationDbContext>(option => option.UseNpgsql(Configuration.GetConnectionString("PostGreConnection")));
             services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 4;
