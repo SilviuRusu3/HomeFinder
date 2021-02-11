@@ -17,11 +17,13 @@ namespace HomeFinder.Models
             NpgsqlConnection.GlobalTypeMapper.MapEnum<HomeType>();
         }
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base (options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
         public DbSet<LocationAttributes> Attributes { get; set; }
         public DbSet<HomeFeatures> Features { get; set; }
+        public DbSet<Area> Areas { get; set; }
+        public DbSet<AreaAttributes> AreaAttributes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseNpgsql("Host=localhost;Database=HomeFinder;Username=postgres;Password=123456",
@@ -39,6 +41,20 @@ namespace HomeFinder.Models
                 .HasMany(u => u.HomeFeatures)
                 .WithOne(f => f.User).
                 IsRequired().OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<User>()
+               .HasMany(u => u.Areas)
+               .WithOne(a => a.User).
+               IsRequired().OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<AreaAttributes>()
+                .HasKey(al => new { al.LocationAttributesId, al.AreaId });
+            modelBuilder.Entity<AreaAttributes>()
+                .HasOne(al => al.Area)
+                .WithMany(a => a.AreaAttributes)
+                .HasForeignKey(al => al.AreaId);
+            modelBuilder.Entity<AreaAttributes>()
+                .HasOne(la => la.LocationAttributes)
+                .WithMany(a => a.AreaAttributes)
+                .HasForeignKey(bc => bc.LocationAttributesId);
         }
     }
 }

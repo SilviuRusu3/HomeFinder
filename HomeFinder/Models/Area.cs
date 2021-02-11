@@ -7,19 +7,18 @@ using System.Threading.Tasks;
 
 namespace HomeFinder.Models
 {
-    public class LocationAttributes
+    public class Area
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        [MinLength(10, ErrorMessage = "Name is too short")]
         public string Name { get; set; }
+        [RegularExpression(@"^\d+\.\d{0,2}$")]
+        public double? GeneralGrade { get; set; }
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }
-        public int Rank { get; set; }
         public ICollection<AreaAttributes> AreaAttributes { get; set; }
-
     }
 }

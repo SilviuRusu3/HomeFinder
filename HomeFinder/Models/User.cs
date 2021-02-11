@@ -11,6 +11,6 @@ namespace HomeFinder.Models
     {
         public ICollection<LocationAttributes> LocationAttributes { get; set; }
         public ICollection<HomeFeatures> HomeFeatures { get; set; }
-        //public ICollection<Review> Reviews { get; set; }
+        public ICollection<Area> Areas { get; set; }
     }
 }
