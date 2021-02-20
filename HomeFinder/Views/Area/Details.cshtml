@@ -1,0 +1,16 @@
+﻿@model Area
+@{
+    ViewData["Title"] = "Area Details";
+}
+<h3>@ViewData["Title"]</h3>
+<div>
+    Attribute Name: @Model.Name
+</div>
+<div>
+    General Grade: @Model.GeneralGrade
+</div>
+<div class="card-footer text-center">
+    <a asp-controller="Area" asp-action="Index" class="btn btn-primary">Back to list</a>
+    <a asp-controller="Area"  asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-controller="Area" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-primary text-danger">Delete</a>
+</div>

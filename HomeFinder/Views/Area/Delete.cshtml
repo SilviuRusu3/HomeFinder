@@ -1,0 +1,21 @@
+﻿@model Area
+@{
+    ViewData["Title"] = "Delete area";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="row">
+    <div class="col col-md-12">
+        <form asp-controller="Area" asp-action="Delete" method="post">
+            <div class="form-group">
+                <label asp-for="Name">Area Name</label>
+                <input class="form-control" asp-for="Name" value="@Model.Name" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="GeneralGrade">General grade</label>
+                <input class="form-control" asp-for="GeneralGrade" value="@Model.GeneralGrade" disabled />
+            </div>
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+</div>
+<div class="text-center"><a class="btn btn-secondary" asp-controller="area" asp-action="Index">Cancel</a></div>
