@@ -19,6 +19,8 @@ namespace HomeFinder.Models
         [ForeignKey("UserId")]
         public User User { get; set; }
         public int Rank { get; set; }
+        [Range(1,10)]
+        public double? Grade { get; set; }
         public ICollection<AreaAttributes> AreaAttributes { get; set; }
 
     }

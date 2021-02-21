@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Review tool";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="container-fluid text-center pb-3">
+    <div class="row" role="article">
+        <div class="col-sm-3 text-left">
+            <ul class="nav">
+                <li class="nav-item w-100">
+                    <a class="nav-link active" asp-controller="area" asp-action="create">Create Area</a>
+                </li>
+                <li class="nav-item w-100">
+                    <a class="nav-link" asp-controller="area" asp-action="Index">List Areas</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9 pt-3 pb-5" style="clear:both">
+            <h4 class="text-left">To do a home review please create a new home area or folow the link to the list of areas</h4>
+            <img src="~/beverly.jpg" class="img-fluid" alt="Beverly Hills"/>
+        </div>
+    </div>
+</div>

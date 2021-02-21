@@ -1,0 +1,48 @@
+﻿@model LocationGrades
+@{
+    ViewData["Title"] = "Attribute grades";
+}
+<h1>@ViewData["Title"]</h1>
+@if (Model.LocationAttributes.Any<LocationAttributes>())
+{
+    <div class="border border-info mt-3 mb-5">
+        <form method="post">
+            <div class="form-group">
+                <input asp-for="AreaId" class="form-control" type="hidden" />
+            </div>
+            <table class="table table-bordered table-hover border-info">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Attribute Name</th>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.LocationAttributes.Count; i++)
+                    {
+                        <tr class="form-group" asp-for="LocationAttributes">
+                            <td>@Html.HiddenFor(m => m.LocationAttributes[i].Id)@Model.LocationAttributes[i].Id</td>
+                            <td>@Html.HiddenFor(m => m.LocationAttributes[i].Name)@Model.LocationAttributes[i].Name</td>
+                            <td>@Html.HiddenFor(m => m.LocationAttributes[i].Rank)@Model.LocationAttributes[i].Rank</td>
+                            <td>
+                                <input asp-for="@Model.LocationAttributes[i].Grade" class="form-control"/><span asp-validation-for="@Model.LocationAttributes[i].Grade" class="text-danger"></span>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Grade Area</button>
+        </form>
+    </div>
+}
+else
+{
+    <p>No location attributes set</p>
+    <div class="text-center"><a class="btn btn-primary" asp-controller="Area" asp-action="General">Back to review main page</a></div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

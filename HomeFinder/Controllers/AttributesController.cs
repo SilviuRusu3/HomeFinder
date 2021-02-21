@@ -34,7 +34,6 @@ namespace HomeFinder.Controllers
             {
                 return NotFound(e.Message);
             }
-
         }
 
         public IActionResult Details(int? Id)

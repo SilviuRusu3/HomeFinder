@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Area>
+@{
+    ViewData["Title"] = "Area List";
+}
+<h1>@ViewData["Title"]</h1>
+@if (Model.Any<Area>())
+{
+    <div class="text-center"><a class="btn btn-primary" asp-controller="Area" asp-action="General">Back to main</a></div>
+    <div class="border border-info mt-3 mb-5">
+        <table class="table table-bordered table-hover border-info">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Attribute Name</th>
+                    <th scope="col">General grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var area in Model)
+                {
+                    <tr>
+                        <td>@area.Id</td>
+                        <td>@area.Name</td>
+                        <td>@area.GeneralGrade</td>
+                    </tr>
+                    <tr class="text-center">
+                        <td colspan="3">
+                            <a asp-controller="area" asp-action="details" asp-route-id="@area.Id" class="btn btn-primary">View</a>
+                            <a asp-controller="area" asp-action="Update" asp-route-id="@area.Id" class="btn btn-primary">Edit Name</a>
+                            <a asp-for="ArId" asp-controller="area" asp-action="CalculateGrade" asp-route-id="@area.Id" class="btn btn-primary">Recalculate grade</a>
+                            <a asp-controller="area" asp-action="Delete" asp-route-id="@area.Id" class="btn btn-primary text-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>No location attributes set</p>
+    <div class="text-center"><a class="btn btn-primary" asp-controller="Attributes" asp-action="General">Back to main</a></div>
+}

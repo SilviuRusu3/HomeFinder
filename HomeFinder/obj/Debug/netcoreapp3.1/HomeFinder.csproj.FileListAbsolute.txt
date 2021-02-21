@@ -1517,3 +1517,10 @@ C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Features\General.cshtml.g.cs
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Features\Index.cshtml.g.cs
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Features\Update.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Area\Create.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Area\Delete.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Area\Details.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Area\Index.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Area\Update.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Area\CalculateGrade.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Area\General.cshtml.g.cs
