@@ -24,6 +24,7 @@ namespace HomeFinder.Models
         public DbSet<HomeFeatures> Features { get; set; }
         public DbSet<Area> Areas { get; set; }
         public DbSet<AreaAttributes> AreaAttributes { get; set; }
+        public DbSet<Home> Homes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseNpgsql("Host=localhost;Database=HomeFinder;Username=postgres;Password=123456",
@@ -55,6 +56,10 @@ namespace HomeFinder.Models
                 .HasOne(la => la.LocationAttributes)
                 .WithMany(a => a.AreaAttributes)
                 .HasForeignKey(bc => bc.LocationAttributesId);
+            modelBuilder.Entity<Area>()
+                .HasMany(a => a.Homes)
+                .WithOne(h => h.Area).
+                IsRequired().OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

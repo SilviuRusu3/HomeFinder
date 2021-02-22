@@ -20,5 +20,6 @@ namespace HomeFinder.Models
         [ForeignKey("UserId")]
         public User User { get; set; }
         public ICollection<AreaAttributes> AreaAttributes { get; set; }
+        public ICollection<Home> Homes { get; set; }
     }
 }

@@ -33,11 +33,19 @@ namespace HomeFinder.Models.Repository
             double sum = 0, maxSum = 0;
             for(int i = 0; i< locationAttributes.Count; i++)
             {
-                if(locationAttributes[i].Grade > 0 && locationAttributes[i].Rank < 10)
+                if (locationAttributes[i].Grade != null)
                 {
-                    sum += Math.Log10(10 - locationAttributes[i].Rank + 1) * (double)locationAttributes[i].Grade;
-                    maxSum += Math.Log10(10 - locationAttributes[i].Rank + 1);
+                    if (locationAttributes[i].Grade > 0 && locationAttributes[i].Rank < 10)
+                    {
+                        sum += Math.Log10(10 - locationAttributes[i].Rank + 1) * (double)locationAttributes[i].Grade;
+                        maxSum += Math.Log10(10 - locationAttributes[i].Rank + 1);
+                    }
                 }
+                
+            }
+            if (maxSum == 0)
+            {
+                return 0;
             }
             return Math.Round((sum / maxSum), 2);
         }
@@ -64,7 +72,7 @@ namespace HomeFinder.Models.Repository
                     AreaAttributes areaAttributes = new AreaAttributes();
                     areaAttributes.AreaId = locationGrades.AreaId;
                     areaAttributes.LocationAttributesId = locationGrades.LocationAttributes[i].Id;
-                    areaAttributes.Grade = (double)locationGrades.LocationAttributes[i].Grade;
+                    areaAttributes.Grade = locationGrades.LocationAttributes[i].Grade != null ? (double)locationGrades.LocationAttributes[i].Grade : areaAttributes.Grade = 0;
                     dbContext.AreaAttributes.Add(areaAttributes);
                     dbContext.SaveChanges();
                 }
@@ -76,7 +84,7 @@ namespace HomeFinder.Models.Repository
                     {
                         if (a.LocationAttributesId == loc.Id)
                         {
-                            a.Grade = (double)loc.Grade;
+                            a.Grade = loc.Grade != null ? (double)loc.Grade: 0;
                         }
                     }
                 }
