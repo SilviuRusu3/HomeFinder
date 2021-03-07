@@ -25,6 +25,7 @@ namespace HomeFinder.Models
         public DbSet<Area> Areas { get; set; }
         public DbSet<AreaAttributes> AreaAttributes { get; set; }
         public DbSet<Home> Homes { get; set; }
+        public DbSet<GradedFeatures> GradedFeatures { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseNpgsql("Host=localhost;Database=HomeFinder;Username=postgres;Password=123456",
@@ -60,6 +61,16 @@ namespace HomeFinder.Models
                 .HasMany(a => a.Homes)
                 .WithOne(h => h.Area).
                 IsRequired().OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<GradedFeatures>()
+                .HasKey(gf => new { gf.HomeFeaturesId, gf.HomeId});
+            modelBuilder.Entity<GradedFeatures>()
+                .HasOne(gf => gf.Home)
+                .WithMany(h => h.GradedFeaturee)
+                .HasForeignKey(gf => gf.HomeId);
+            modelBuilder.Entity<GradedFeatures>()
+                .HasOne(gf => gf.HomeFeatures)
+                .WithMany(hf => hf.GradedFeaturee)
+                .HasForeignKey(gf => gf.HomeFeaturesId);
         }
     }
 }

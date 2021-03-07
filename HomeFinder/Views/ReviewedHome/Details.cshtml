@@ -1,0 +1,39 @@
+﻿@model Home
+@{
+    ViewData["Title"] = "Home Details";
+}
+<h3>@ViewData["Title"]</h3>
+<div>
+    Id: @Model.Id
+</div>
+<div>
+    Adress: @Model.Adress
+</div>
+<div>
+    Home Type: @Model.HomeType
+</div>
+<div>
+    Price: @Model.Price
+</div>
+<div>
+    Latitude: @Model.Latitude
+</div>
+<div>
+    Longitude: @Model.Longitude
+</div>
+<div>
+    General Grade: @Model.GeneralGrade
+</div>
+<div>
+    Area Id: @Model.AreaId
+</div>
+<div>
+    Review: @Model.Review
+</div>
+
+<div class="card-footer text-center">
+    <a asp-controller="ReviewedHome" asp-action="Index" asp-route-id="@Model.AreaId"class="btn btn-primary">Back to list</a>
+    <a asp-controller="ReviewedHome" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-controller="ReviewedHome" asp-action="GradeHome" asp-route-id="@Model.Id" class="btn btn-primary">Recalculate Grade</a>
+    <a asp-controller="ReviewedHome" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-primary text-danger">Delete</a>
+</div>

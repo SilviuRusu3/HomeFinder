@@ -22,16 +22,10 @@ namespace HomeFinder.Controllers
         }
         public IActionResult Index()
         {
-            try
-            {
-                string userId = this.User.GetUserId();
-                var model = _areasRepo.GetAllAreas(userId);
-                return View(model);
-            }
-            catch (Exception e)
-            {
-                return NotFound(e.Message);
-            }
+            string userId = this.User.GetUserId();
+            var model = _areasRepo.GetAllAreas(userId);
+            return View(model);
+
         }
 
         [HttpGet]
@@ -129,7 +123,8 @@ namespace HomeFinder.Controllers
             if (area.GeneralGrade == 0)
             {
                 locationGrades.LocationAttributes = _attributesRepo.GetAllAttributes(area.UserId).ToList();
-            } else
+            }
+            else
             {
                 locationGrades.LocationAttributes = _attributesRepo.GetAllAttributes(currentUser).ToList();
             }

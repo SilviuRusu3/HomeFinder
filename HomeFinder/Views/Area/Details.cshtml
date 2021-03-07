@@ -11,6 +11,7 @@
 </div>
 <div class="card-footer text-center">
     <a asp-controller="Area" asp-action="Index" class="btn btn-primary">Back to list</a>
-    <a asp-controller="Area"  asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-controller="Area" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-controller="ReviewedHome" asp-action="index" asp-route-id="@Model.Id" class="btn btn-primary">Homes in Area</a>
     <a asp-controller="Area" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-primary text-danger">Delete</a>
 </div>

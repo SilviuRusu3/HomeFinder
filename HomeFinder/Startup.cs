@@ -33,6 +33,7 @@ namespace HomeFinder
             services.AddScoped<IAttributesRepository, SQLAttributeRepository>();
             services.AddScoped<IFeaturesRepository, SQLFeaturesRepository>();
             services.AddScoped<IAreasRepository, SQLAreasRepository>();
+            services.AddScoped<IReviewedHomeRepository, SQLReviewedHomeRepository>();
             //Singleton-a single instance that is reused for all requests
             //Scoped an instance within the scope of a HTTP request
             //Transient an instance is created every time an instance is requested

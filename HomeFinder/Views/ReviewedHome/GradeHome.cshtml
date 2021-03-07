@@ -1,0 +1,50 @@
+﻿@model CreateHome
+@{
+    ViewData["Title"] = "Home feature Grades";
+}
+<h1>@ViewData["Title"]</h1>
+@if (Model.HomeFeatures.Any<HomeFeatures>())
+{
+    <div class="border border-info mt-3 mb-5">
+        <form method="post" asp-action="GradeHome">
+            <div class="form-group">
+                <input asp-for="@Model.AreaId" class="form-control" type="hidden" value="@Model.AreaId" />
+            </div>
+            <div class="form-group">
+                <input asp-for="@Model.HomeId" class="form-control" type="hidden" value="@Model.HomeId" />
+            </div>
+            <table class="table table-bordered table-hover border-info">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Feature Name</th>
+                        <th scope="col">Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.HomeFeatures.Count; i++)
+                    {
+                        <tr class="form-group" asp-for="LocationAttributes">
+                            <td>@Html.HiddenFor(m => m.HomeFeatures[i].Id)@Model.HomeFeatures[i].Id</td>
+                            <td>@Html.HiddenFor(m => m.HomeFeatures[i].Name)@Model.HomeFeatures[i].Name</td>
+                            <td>
+                                <input asp-for="@Model.HomeFeatures[i].Grade" class="form-control" />
+                                <span asp-validation-for="@Model.HomeFeatures[i].Grade" class="text-danger"></span>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Grade Home Features</button>
+        </form>
+    </div>
+}
+else
+{
+    <p>No Home Features set</p>
+    <div class="text-center"><a class="btn btn-primary" asp-controller="Area" asp-action="Index">Back to area list</a></div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
