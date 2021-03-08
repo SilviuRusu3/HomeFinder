@@ -1,0 +1,68 @@
+﻿@model AreaHome
+@{
+    ViewData["Title"] = "List of homes in \""+Model.area.Name+"\" area";
+}
+<h1>@ViewData["Title"]</h1>
+<h5 class="text-center text-uppercase text-success">Area grade = @Model.area.GeneralGrade</h5>
+<div class="text-center"><a class="btn btn-primary" asp-controller="Area" asp-action="Index">Back to Area list</a></div>
+<div class="row" role="article">
+    <div class="col-sm-3 text-left">
+        <ul class="nav">
+            <li class="nav-item w-100 pb-3 pt-3">
+                <a class="nav-link active" asp-controller="ReviewedHome" asp-action="create" asp-route-id="@Model.area.Id">Review Home</a>
+            </li>
+            <li class="nav-item w-100">
+                <form asp-controller="ReviewedHome" asp-action="Index" method="get">
+                    <select asp-for="@Model.homeType" class="custom-select mr-sm-2"
+                            asp-items="Html.GetEnumSelectList<HomeType>()">
+                        <option selected>All Homes</option>
+                    </select>
+                    <div class="text-left"><input type="submit" value="Filter" class="btn btn-primary"/></div>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-9 pt-3 pb-5" style="clear:both">
+        @if (Model.homes.Any<Home>())
+        {
+            <div class="border border-info mt-3 mb-5">
+                <table class="table table-bordered table-hover border-info">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Home type</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">General grade</th>
+                            <th scope="col">Adress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var home in Model.homes)
+                        {
+                            <tr>
+                                <td>@home.Id</td>
+                                <td>@home.HomeType</td>
+                                <td>@home.Price</td>
+                                <td>@home.GeneralGrade</td>
+                                <td>@home.Adress</td>
+                            </tr>
+                            <tr class="text-center">
+                                <td colspan="5">
+                                    <a asp-controller="ReviewedHome" asp-action="details" asp-route-id="@home.Id" class="btn btn-primary">View</a>
+                                    <a asp-controller="ReviewedHome" asp-action="Update" asp-route-id="@home.Id" class="btn btn-primary">Edit</a>
+                                    <a asp-controller="ReviewedHome" asp-for="homeId" asp-action="GradeHome" asp-route-id="@home.Id" class="btn btn-primary">Recalculate grade</a>
+                                    <a asp-controller="ReviewedHome" asp-action="Delete" asp-route-id="@home.Id" class="btn btn-primary text-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="text-left">No home review</p>
+        }
+    </div>
+</div>
+

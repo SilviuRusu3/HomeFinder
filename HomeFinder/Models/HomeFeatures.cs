@@ -17,8 +17,11 @@ namespace HomeFinder.Models
         [MinLength(10, ErrorMessage = "Name is too short")]
         public string Name { get; set; }
         public HomeType? HomeType { get; set; }
+        [Range(1,10)]
+        public double? Grade { get; set; }
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }
+        public ICollection<GradedFeatures> GradedFeaturee { get; set; }
     }
 }

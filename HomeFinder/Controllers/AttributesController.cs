@@ -24,16 +24,9 @@ namespace HomeFinder.Controllers
         }
         public IActionResult Index()
         {
-            try
-            {
-                string userId = this.User.GetUserId();
-                var model = _attributesRepo.GetAllAttributes(userId);
-                return View(model);
-            }
-            catch (Exception e)
-            {
-                return NotFound(e.Message);
-            }
+            string userId = this.User.GetUserId();
+            var model = _attributesRepo.GetAllAttributes(userId);
+            return View(model);
         }
 
         public IActionResult Details(int? Id)

@@ -14,7 +14,7 @@
                 <label asp-for="HomeType">Home type</label>
                 <input class="form-control" asp-for="HomeType" value="@Model.HomeType" disabled />
             </div>
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
         </form>
     </div>
 </div>

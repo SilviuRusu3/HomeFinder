@@ -1524,3 +1524,9 @@ C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Area\Update.cshtml.g.cs
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Area\CalculateGrade.cshtml.g.cs
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\Area\General.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\ReviewedHome\Create.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\ReviewedHome\Delete.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\ReviewedHome\Details.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\ReviewedHome\GradeHome.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\ReviewedHome\Index.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\ReviewedHome\Update.cshtml.g.cs

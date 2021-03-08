@@ -12,6 +12,7 @@ namespace HomeFinder.Models
     {
         [Key]
         public int Id { get; set; }
+        public double Price { get; set; }
         [Required]
         public HomeType? HomeType { get; set; }
         [RegularExpression(@"^\d+\.\d{0,2}$")]
@@ -26,5 +27,6 @@ namespace HomeFinder.Models
         public int AreaId { get; set; }
         [ForeignKey("AreaId")]
         public Area Area { get; set; }
+        public ICollection<GradedFeatures> GradedFeaturee { get; set; }
     }
 }

@@ -11,7 +11,7 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Attribute Name</th>
+                    <th scope="col">Area Name</th>
                     <th scope="col">General grade</th>
                 </tr>
             </thead>
@@ -28,6 +28,7 @@
                             <a asp-controller="area" asp-action="details" asp-route-id="@area.Id" class="btn btn-primary">View</a>
                             <a asp-controller="area" asp-action="Update" asp-route-id="@area.Id" class="btn btn-primary">Edit Name</a>
                             <a asp-for="ArId" asp-controller="area" asp-action="CalculateGrade" asp-route-id="@area.Id" class="btn btn-primary">Recalculate grade</a>
+                            <a asp-route-id ="@area.Id" asp-controller="ReviewedHome" asp-action="index" class="btn btn-primary">Homes in Area</a>
                             <a asp-controller="area" asp-action="Delete" asp-route-id="@area.Id" class="btn btn-primary text-danger">Delete</a>
                         </td>
                     </tr>

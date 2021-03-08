@@ -4,15 +4,17 @@ using HomeFinder.HelpClass;
 using HomeFinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HomeFinder.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210222121557_AddGradedFeaturesToDB")]
+    partial class AddGradedFeaturesToDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,9 +112,6 @@ namespace HomeFinder.Migrations
                     b.Property<string>("Longitude")
                         .HasColumnType("text");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("double precision");
-
                     b.Property<string>("Review")
                         .HasMaxLength(300)
                         .HasColumnType("character varying(300)");
@@ -130,9 +129,6 @@ namespace HomeFinder.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
-
-                    b.Property<double?>("Grade")
-                        .HasColumnType("double precision");
 
                     b.Property<HomeType?>("HomeType")
                         .HasColumnType("home_type");
