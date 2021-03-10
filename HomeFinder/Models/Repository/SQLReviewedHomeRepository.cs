@@ -1,4 +1,5 @@
-﻿using HomeFinder.ViewModels;
+﻿using HomeFinder.HelpClass;
+using HomeFinder.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -128,6 +129,23 @@ namespace HomeFinder.Models.Repository
                 }
                 dbContext.SaveChanges();
             }
+        }
+        public IEnumerable<Home> GetUserHomes(string userId)
+        {
+            //used toList to force the querry
+            IEnumerable<int> areas = dbContext.Areas.Where(a => a.UserId == userId).Select(a => a.Id).ToList<int>();
+            IEnumerable<Home> homes = dbContext.Homes.ToList<Home>();
+            IList<Home> selectedHomes = new List<Home>();
+            foreach(Home home in homes)
+            {
+                foreach (int area in areas) {
+                    if (home.AreaId == area)
+                    {
+                        selectedHomes.Add(home);
+                    }
+                }
+            }
+            return selectedHomes;
         }
     }
 }

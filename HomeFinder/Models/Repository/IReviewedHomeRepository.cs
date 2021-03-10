@@ -17,5 +17,6 @@ namespace HomeFinder.Models.Repository
         void DeleteHome(int id);
         double CalculateGrade(IList<HomeFeatures> gradedFeatures);
         void FillJointTable(CreateHome gradedFeatures);
+        IEnumerable<Home> GetUserHomes(string userId);
     }
 }
