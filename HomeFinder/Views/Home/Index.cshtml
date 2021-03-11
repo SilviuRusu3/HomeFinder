@@ -1,4 +1,5 @@
-﻿@inject SignInManager<User> signInManager;
+﻿@model IList<Home>
+@inject SignInManager<User> signInManager;
 @{
     ViewData["Title"] = "Home Page";
     bool active = signInManager.IsSignedIn(User);
@@ -10,9 +11,39 @@
         <img src="~/Google_map.png" class="img-fluid" alt="Google map image" />
     </section>
     <section class="flex-sm-row">
-        <p>Review1</p>
-        <p>Review1</p>
-        <p>Review1</p>
+        @if (Model.Any<Home>())
+        {
+            <table class="table table-bordered table-hover border-info">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Home Type</th>
+                        <th scope="col">Adress</th>
+                        <th scope="col">Grade</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count && i < 3; i++)
+                    {
+                    <tr>
+                        <td>@Model[i].HomeType</td>
+                        <td>@Model[i].Adress</td>
+                        <td>@Model[i].GeneralGrade</td>
+                        <td>@Model[i].Price &euro;</td>
+                    </tr>
+                        <tr class="text-center">
+                            <td colspan="4">
+                                <a asp-controller="ReviewedHome" asp-action="details" asp-route-id="@Model[i].Id" class="btn btn-primary">View</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+        <p>No reviewed homes</p>
+        }
     </section>
     <section class="flex-sm-row p-3">
         <div class="btn"> <a class="btn nav-link text-dark btn-outline-success" asp-controller="area" asp-action="general">Review Tool</a></div>
