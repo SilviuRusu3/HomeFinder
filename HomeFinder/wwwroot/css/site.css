@@ -75,3 +75,8 @@ p#home {
     box-shadow: 0 -.25rem .75rem rgba(0, 0, 0, .05);
     /* Vertically center the text there */
 }
+#map {
+    height: 500px;
+    width: auto;
+}
+
