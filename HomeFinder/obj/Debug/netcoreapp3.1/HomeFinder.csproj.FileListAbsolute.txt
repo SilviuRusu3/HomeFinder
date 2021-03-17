@@ -36,7 +36,6 @@ C:\Users\Silviu\repos\HomeFinder\HomeFinder\bin\Debug\netcoreapp3.1\ru\Microsoft
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\HomeFinder.csprojAssemblyReference.cache
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\HomeFinder.AssemblyInfoInputs.cache
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\HomeFinder.AssemblyInfo.cs
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\HomeFinder.RazorAssemblyInfo.cache
@@ -1530,3 +1529,4 @@ C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\ReviewedHome\GradeHome.cshtml.g.cs
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\ReviewedHome\Index.cshtml.g.cs
 C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\Razor\Views\ReviewedHome\Update.cshtml.g.cs
+C:\Users\Silviu\repos\HomeFinder\HomeFinder\obj\Debug\netcoreapp3.1\HomeFinder.csprojAssemblyReference.cache

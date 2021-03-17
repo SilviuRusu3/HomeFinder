@@ -10,6 +10,8 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/8d2323ec4e.js" crossorigin="anonymous"></script>
     <script src="~/js/site.js"></script>
 </head>
@@ -76,9 +78,8 @@
             <div></div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoIsW7_ztMdbJHD-SAGh8C4S-HXWgkksQ&callback=initMap" defer></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

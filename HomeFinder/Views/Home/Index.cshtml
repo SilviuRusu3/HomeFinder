@@ -3,73 +3,92 @@
 @{
     ViewData["Title"] = "Home Page";
     bool active = signInManager.IsSignedIn(User);
+    var gradedHomes = 0;
 }
 
-@if (active) {
-<div class="container text-center flex-column" role="article">
-    <section class="flex-sm-row pl-5 pr-5 pt-3 pb-3 ml-5 mr-5">
-        <img src="~/Google_map.png" class="img-fluid" alt="Google map image" />
-    </section>
-    <section class="flex-sm-row">
-        @if (Model.Any<Home>())
-        {
-            <table class="table table-bordered table-hover border-info">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">Home Type</th>
-                        <th scope="col">Adress</th>
-                        <th scope="col">Grade</th>
-                        <th scope="col">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int i = 0; i < Model.Count && i < 3; i++)
-                    {
-                    <tr>
-                        <td>@Model[i].HomeType</td>
-                        <td>@Model[i].Adress</td>
-                        <td>@Model[i].GeneralGrade</td>
-                        <td>@Model[i].Price &euro;</td>
-                    </tr>
-                        <tr class="text-center">
-                            <td colspan="4">
-                                <a asp-controller="ReviewedHome" asp-action="details" asp-route-id="@Model[i].Id" class="btn btn-primary">View</a>
-                            </td>
+@if (active)
+{
+    <div class="container text-center flex-column" role="article">
+        <div id="map" class="z-depth-1-half map-container flex-sm-row" style="height: 500px">
+        </div>
+        <section class="flex-sm-row">
+            @if (Model.Any<Home>())
+            { 
+                <table class="table table-bordered table-hover border-info">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Home Type</th>
+                            <th scope="col">Adress</th>
+                            <th scope="col">Grade</th>
+                            <th scope="col">Price</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count && i < 3; i++)
+                        {
+                            <tr>
+                                <td>@Model[i].HomeType</td>
+                                <td>@Model[i].Adress</td>
+                                <td>@Model[i].GeneralGrade</td>
+                                <td>@Model[i].Price &euro;</td>
+                            </tr>
+                            <tr class="text-left">
+                                <td colspan="4">
+                                    <a asp-controller="ReviewedHome" asp-action="details" asp-route-id="@Model[i].Id" class="btn btn-primary">View</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div id="allHomes" hidden>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <p>
+                            <span>@Model[i].Id</span>
+                            <span>@Model[i].HomeType</span>
+                            <span>@Model[i].GeneralGrade</span>
+                            <span>@Model[i].Latitude</span>
+                            <span>@Model[i].Longitude</span>
+                            <span>@Model[i].Adress</span>
+                            <span>@Model[i].Price</span>
+                        </p>
                     }
-                </tbody>
-            </table>
-        }
-        else
-        {
-        <p>No reviewed homes</p>
-        }
-    </section>
-    <section class="flex-sm-row p-3">
-        <div class="btn"> <a class="btn nav-link text-dark btn-outline-success" asp-controller="area" asp-action="general">Review Tool</a></div>
-        <div class="btn"><a class="btn nav-link text-dark btn-outline-success" asp-controller="user" asp-action="register">Financial Calculators</a></div>
-        <div class="btn"><a class="btn nav-link text-dark btn-outline-success" asp-controller="user" asp-action="register">Tips & Tricks</a></div>
-    </section>
-</div>
-} else {
-<div class="container text-center" role="article">
-    <h1 class="text-primary">Home Finder</h1>
-    <p class="text-black-50">-Helps you find a home-</p>
-    <div class="row">
-        <section class="col-sm-4 text-left">
-            <h4 class="text-success">Find your perfect home</h4>
-            <p id="home" class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Nullam risus urna, fermentum a mi a, elementum congue leo. 
-            Nam magna nunc, interdum vitae augue id, consequat viverra ipsum. 
-            Donec faucibus ipsum erat, a ultricies nisi facilisis sed. 
-            Fusce eleifend sapien sit amet dolor facilisis, eget mattis purus facilisis. 
-            Nam eget malesuada purus. Aliquam hendrerit nibh vestibulum semper placerat. 
-            Aenean pellentesque egestas metus, non maximus eros. </p>
+                </div>
+            }
+            else
+            {
+                <p>No reviewed homes</p>
+            }
         </section>
-        <section class="col-sm">
-            <img src="~/Sold house.jpg" class="img-fluid" alt="Image of a sold house"/>
+        <section class="flex-sm-row p-3">
+            <div class="btn"> <a class="btn nav-link text-dark btn-outline-success" asp-controller="area" asp-action="general">Review Tool</a></div>
+            <div class="btn"><a class="btn nav-link text-dark btn-outline-success" asp-controller="user" asp-action="register">Financial Calculators</a></div>
+            <div class="btn"><a class="btn nav-link text-dark btn-outline-success" asp-controller="user" asp-action="register">Tips & Tricks</a></div>
         </section>
     </div>
-</div>
+}
+else
+{
+    <div class="container text-center" role="article">
+        <h1 class="text-primary">Home Finder</h1>
+        <p class="text-black-50">-Helps you find a home-</p>
+        <div class="row">
+            <section class="col-sm-4 text-left">
+                <h4 class="text-success">Find your perfect home</h4>
+                <p id="home" class="text-justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nullam risus urna, fermentum a mi a, elementum congue leo.
+                    Nam magna nunc, interdum vitae augue id, consequat viverra ipsum.
+                    Donec faucibus ipsum erat, a ultricies nisi facilisis sed.
+                    Fusce eleifend sapien sit amet dolor facilisis, eget mattis purus facilisis.
+                    Nam eget malesuada purus. Aliquam hendrerit nibh vestibulum semper placerat.
+                    Aenean pellentesque egestas metus, non maximus eros.
+                </p>
+            </section>
+            <section class="col-sm">
+                <img src="~/Sold house.jpg" class="img-fluid" alt="Image of a sold house" />
+            </section>
+        </div>
+    </div>
 }
 
