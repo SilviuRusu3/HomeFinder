@@ -14,7 +14,7 @@ namespace HomeFinder.Models
     {
         static ApplicationDbContext()
         {
-            NpgsqlConnection.GlobalTypeMapper.MapEnum<HomeType>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<HomeType>();//Use enum with PostgreSQL
         }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)

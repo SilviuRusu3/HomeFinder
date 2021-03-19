@@ -38,6 +38,7 @@ namespace HomeFinder.Controllers
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, isPersistent: false);
+                    //isPersistent is used for confirming saving across browser sessions
                     return RedirectToAction("index", "home");
                 }
                 foreach (var error in result.Errors)
@@ -56,14 +57,16 @@ namespace HomeFinder.Controllers
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login(Login model, string returnUrl)
-        {
+        {//if you access a resource without beeing logged in you will be redirected to the
+         //log in page and after the log in redirected to the resource innitialy requested
             if (ModelState.IsValid)
             {
-                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password,model.RememberMe,false);
+                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                //RememberMe is used for persistent cookies
                 if (result.Succeeded)
                 {
                     if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    {
+                    {//prevent with IsLocalUrl open redirect attacks
                         return Redirect(returnUrl);
                     }
                     return RedirectToAction("index", "home");

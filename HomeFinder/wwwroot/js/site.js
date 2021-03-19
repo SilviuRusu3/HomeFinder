@@ -10,8 +10,8 @@
 });
 
 function showPosition(position) {
-    $("#Latitude").val(position.coords.latitude);
-    $("#Longitude").val(position.coords.longitude);
+    $("#Latitude").val(position.coords.latitude+1);
+    $("#Longitude").val(position.coords.longitude+1);
 };
 
 var homesCollection = $("#allHomes > p");
@@ -28,7 +28,8 @@ function initMap() {
     var geocoders = new google.maps.Geocoder();
     for (let i = 0; i < homesCollection.length; i++) {
         spans[i] = homesCollection[i].getElementsByTagName('span');
-        if (spans[i][3].innerHTML == null || spans[i][3].innerHTML == "") {//if coordinates are missing
+        if (spans[i][3].innerHTML == null || spans[i][4].innerHTML == null ||
+            spans[i][3].innerHTML == "" || spans[i][4].innerHTML == "") {//if coordinates are missing
             geocoders.geocode({ address: spans[i][5].innerHTML }, (results, status) => {
                 if (status === "OK") {
                     markers[i] = new google.maps.Marker({

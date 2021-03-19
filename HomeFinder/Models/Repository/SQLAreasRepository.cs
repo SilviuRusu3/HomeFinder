@@ -36,8 +36,9 @@ namespace HomeFinder.Models.Repository
                 if (locationAttributes[i].Grade != null)
                 {
                     if (locationAttributes[i].Grade > 0 && locationAttributes[i].Rank < 10)
-                    {
+                    {//Rank 1 will generate 1*grade; rank 9 will generate 0.3 * grade; rank above 9 is unusable so it is ignored
                         sum += Math.Log10(10 - locationAttributes[i].Rank + 1) * (double)locationAttributes[i].Grade;
+                        //maxSum is calculated as if the grade is 10 for available ranks
                         maxSum += Math.Log10(10 - locationAttributes[i].Rank + 1);
                     }
                 }
@@ -65,7 +66,7 @@ namespace HomeFinder.Models.Repository
         public void FillJointTable(LocationGrades locationGrades)
         {
             var areas = dbContext.AreaAttributes.Where(a => a.AreaId == locationGrades.AreaId);
-            if (!areas.Any()) 
+            if (!areas.Any())//if the area hasn't allready been graded 
             {
                 for (int i = 0; i < locationGrades.LocationAttributes.Count; i++)
                 {
