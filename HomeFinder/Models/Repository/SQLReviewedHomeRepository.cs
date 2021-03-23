@@ -17,7 +17,8 @@ namespace HomeFinder.Models.Repository
         }
         public Home AddHome(Home home)
         {
-            home.Id = 0;
+            home.Id = 0;//this is done because model biding binds the same value for 2 items
+            //home.AreaId and home.Id
             dbContext.Homes.Add(home);
             dbContext.SaveChanges();
             return home;
@@ -52,7 +53,7 @@ namespace HomeFinder.Models.Repository
             dbContext.SaveChanges();
         }
         public double CalculateGrade(IList<HomeFeatures> gradedFeatures)
-        {
+        {//this calculates the average grade
             double sum = 0;
             int validGrades = 0;
             for (int i = 0; i < gradedFeatures.Count; i++)
@@ -73,7 +74,7 @@ namespace HomeFinder.Models.Repository
         public Home AddGradeToHome(int homeId, double grade)
         {
             Home home = dbContext.Homes.Find(homeId);
-            home.GeneralGrade = grade;
+            home.GeneralGrade = Math.Round(grade,2);
             dbContext.SaveChanges();
             return home;
         }
@@ -81,7 +82,7 @@ namespace HomeFinder.Models.Repository
         public void FillJointTable(CreateHome gradedFeatures)
         {
             var homes = dbContext.GradedFeatures.Where(a => a.HomeId == gradedFeatures.HomeId);
-            if (!homes.Any())
+            if (!homes.Any())//if the home hasn't already been graded
             {
                 for (int i = 0; i < gradedFeatures.HomeFeatures.Count; i++)
                 {
@@ -112,7 +113,7 @@ namespace HomeFinder.Models.Repository
                     {
                         if (h.HomeFeaturesId == feature.Id)
                         {
-                            if (feature.Grade <= 0 && feature.Grade == null)
+                            if (feature.Grade <= 0 || feature.Grade == null)
                             {
                                 h.Grade = 0;
                             }

@@ -9,7 +9,7 @@ namespace HomeFinder.HelpClass
 {
     public static class IdFinder
     {
-        //extension method
+        //extension method used to get the current user id
         public static string GetUserId(this IPrincipal principal)
         {
             var claimsIdentity = (ClaimsIdentity)principal.Identity;

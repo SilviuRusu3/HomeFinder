@@ -101,7 +101,7 @@ namespace HomeFinder.Controllers
             areaHome.area = _areaRepo.GetArea((int)Id);
             areaHome.homeType = type;
             if (homeType == null)
-            {
+            {//used for the filter for homes by home type
                 areaHome.homes = allHomes;
             } else
             {
@@ -165,7 +165,7 @@ namespace HomeFinder.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult GradeHome(CreateHome gradedHome)
-        {
+        {//used to calculate the general grade for a home
             Home home = _homeRepo.GetHome(gradedHome.HomeId);
             if (ModelState.IsValid)
             {
@@ -174,8 +174,10 @@ namespace HomeFinder.Controllers
                 if (areaGrade > 0)
                 {
                     grade = (grade + areaGrade) / 2;
+                    //the grade for the home is an average of area grade and home features average grade
                 }
                 Home displayHome = _homeRepo.AddGradeToHome(home.Id, grade);
+                //many to many relation with home features of home class requires a joint table
                 _homeRepo.FillJointTable(gradedHome);
                 return View("Details", displayHome);
             }

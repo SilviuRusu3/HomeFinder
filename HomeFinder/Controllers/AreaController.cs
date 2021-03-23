@@ -44,6 +44,7 @@ namespace HomeFinder.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //Prevent cross site request forgery XSRF by validating the token injected in the form
         public IActionResult Update(Area areaChange)
         {
             if (ModelState.IsValid)
@@ -116,7 +117,7 @@ namespace HomeFinder.Controllers
         }
         [HttpGet]
         public IActionResult CalculateGrade(Area area)
-        {
+        {//calculates the general grade assesed from every relevant location attribute grade.
             var currentUser = this.User.GetUserId();
             LocationGrades locationGrades = new LocationGrades();
             locationGrades.AreaId = area.Id;
@@ -141,6 +142,7 @@ namespace HomeFinder.Controllers
             {
                 double grade = _areasRepo.CalculateGrade(locationGrades.LocationAttributes);
                 var model = _areasRepo.addGradeToArea(locationGrades.AreaId, grade);
+                //because of the many to many relation of Area and LocationAttributes a joint table was created
                 _areasRepo.FillJointTable(locationGrades);
                 return View("Details", model);
             }

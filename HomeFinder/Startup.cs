@@ -30,7 +30,7 @@ namespace HomeFinder
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddXmlSerializerFormatters();
-            services.AddScoped<IAttributesRepository, SQLAttributeRepository>();
+            services.AddScoped<IAttributesRepository, SQLAttributeRepository>();//used to facilitate repository pattern
             services.AddScoped<IFeaturesRepository, SQLFeaturesRepository>();
             services.AddScoped<IAreasRepository, SQLAreasRepository>();
             services.AddScoped<IReviewedHomeRepository, SQLReviewedHomeRepository>();
@@ -40,7 +40,7 @@ namespace HomeFinder
             services.AddDbContext<ApplicationDbContext>(option => option.UseNpgsql(Configuration.GetConnectionString("PostGreConnection")));
             services.AddIdentity<User, IdentityRole>(options =>
             {
-                options.Password.RequiredLength = 4;
+                options.Password.RequiredLength = 4;//configure requirements for password
                 options.Password.RequiredUniqueChars = 1;
                 options.Password.RequireNonAlphanumeric = true;
             }).AddEntityFrameworkStores<ApplicationDbContext>();
@@ -48,7 +48,7 @@ namespace HomeFinder
             services.AddControllersWithViews(options =>
             {
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
+                options.Filters.Add(new AuthorizeFilter(policy));//adds authorization
             });
         }
 

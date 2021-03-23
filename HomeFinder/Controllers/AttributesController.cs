@@ -51,11 +51,11 @@ namespace HomeFinder.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(LocationAttributes modelAttribute)
-        //IActionResult is suitable for ViewResult and RedirectToAction because they implement this interface
+        //IActionResult is suitable for ViewResult and RedirectToAction because the two implement this interface
         {
             string userId = this.User.GetUserId();
             modelAttribute.UserId = userId;
-            if (ModelState.IsValid)//used for validation
+            if (ModelState.IsValid)//used for validation serverside
             {
                 LocationAttributes attribute = _attributesRepo.AddAtribute(modelAttribute);
                 return RedirectToAction("Details", new { id = attribute.Id });

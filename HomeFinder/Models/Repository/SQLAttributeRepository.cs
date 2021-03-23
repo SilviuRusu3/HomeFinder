@@ -23,7 +23,7 @@ namespace HomeFinder.Models
                 }
             }
             if (foundRank)
-            {
+            {//if the rank of the new item is found in the database
                 foreach (var item in dbContext.Attributes)
                 {
                     if(item.Rank >= attribute.Rank)
@@ -45,7 +45,7 @@ namespace HomeFinder.Models
                 foreach (var item in dbContext.Attributes)
                 {
                     if (item.Rank > deletedAttribute.Rank)
-                    {
+                    {//Every rank grater than the deleted rank will be decreased
                         item.Rank--;
                     }
                 }
@@ -74,6 +74,7 @@ namespace HomeFinder.Models
                 if (item.Id == attributeChanges.Id)
                 {
                     scarceRank = item.Rank;
+                    //scareRank saves the value of the rank before change
                     item.Rank = attributeChanges.Rank;
                     item.Name = attributeChanges.Name;
                 }
@@ -81,7 +82,8 @@ namespace HomeFinder.Models
             foreach (var item in dbContext.Attributes)
             {
                 if (item.Rank == attributeChanges.Rank && item.Id != attributeChanges.Id)
-                {
+                {//The item that has the value for the rank identical to scarce rank but does not have the same id
+                //will have a changed rank
                     item.Rank = scarceRank;
                 }
             }

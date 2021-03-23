@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HomeFinder.Controllers
 {
-    [AllowAnonymous]
+    [AllowAnonymous]//to be accessed without authorization
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -34,7 +34,8 @@ namespace HomeFinder.Controllers
             {
                 IEnumerable<Home> homes = _reviewedHomeRepo.GetUserHomes(this.User.GetUserId());
                 List<Home> sortedHomes = homes.ToList();
-                sortedHomes.Sort(new HomeComparer());
+                sortedHomes.Sort(new HomeComparer());//HomeComparer implements IComparer
+                //Homes are sorted using grade
                 return View(sortedHomes);
             }
             return View();

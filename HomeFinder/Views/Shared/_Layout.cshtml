@@ -28,7 +28,7 @@
                     <ul class="navbar-nav ml-auto justify-content-end">
                         @if (active)
                         {
-                            <li class="nav-item">
+                            <li class="nav-item mr-1">
                                 <form method="post" asp-action="logout" asp-controller="user">
                                     <button type="submit" class="btn nav-link text-dark btn-outline-primary w-100">
                                         Logout @User.Identity.Name
@@ -50,7 +50,7 @@
                         }
                         else
                         {
-                            <li class="nav-item">
+                            <li class="nav-item mr-1">
                                 <a class="btn nav-link text-dark btn-outline-primary" asp-controller="user" asp-action="register">Register</a>
                             </li>
                             <li class="nav-item">
